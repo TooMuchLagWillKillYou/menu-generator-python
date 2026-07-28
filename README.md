@@ -60,6 +60,13 @@ Colors: [
     { 'name': '', 'code': '' },
     { 'name': '', 'code': '' }
 ]
+
+Args positions: [
+    0 = format(s),
+    1 = language(s),
+    example: python ./main.py table,desser italian,english,german # -> create 6 pdf in total: one for each format and language combination
+]
+
 ```
 
 ## Flow:
