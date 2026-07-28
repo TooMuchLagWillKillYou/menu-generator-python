@@ -1,24 +1,27 @@
-import os
 import csv
-from pyhtml2pdf import converter
 from src import config
 from src.schemas import MenuItem
+from src.html_helper import read_index, get_item_html
 
 def get_items() -> list[MenuItem]:
-    with open(config.ITEM_FILE, newline='', encoding='cp1252') as f:
+    with open(config.ITEMS_FILE, newline='', encoding='cp1252') as f:
         reader = csv.DictReader(f, delimiter=',')
         return [MenuItem(**row) for row in reader]
 
-def convert_html_to_pdf() -> None:
-    path = os.path.abspath("./resources/index.html")
-    converter.convert(f'file://{path}', config.OUTPUT_FILE)
+def compose_items() -> str:
+
+    result = '<div class="items-container">'
+    result += ''.join(get_item_html(item) for item in get_items())
+    result += '</div>'
+
+    return result
 
 def main():
-        
-    items = get_items()
-    for item in items[:10]:
-        print(item)
-        print("\n")
+    html = read_index(config.HTML_FILE)
+
+    items_html = compose_items()
+    new_html = html.replace('<div class="items-container"></div>', items_html)
+    print(new_html)
 
 if __name__ == "__main__":
     main()

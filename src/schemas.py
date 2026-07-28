@@ -10,5 +10,4 @@ class MenuItem(BaseModel):
     ingredients: str
     english_translation: str
     german_translation: str
-    # first_price: float
-    # second_price: float
+    first_price: float
