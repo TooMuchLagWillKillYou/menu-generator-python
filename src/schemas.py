@@ -7,5 +7,8 @@ class Category(BaseModel):
 class MenuItem(BaseModel):
     id: int
     name: str
-    price: float
-    category: Category
+    ingredients: str
+    english_translation: str
+    german_translation: str
+    # first_price: float
+    # second_price: float
