@@ -1,16 +1,12 @@
 @font-face {
   font-family: 'Brolimo';
-  src:
-    url('/BrolimoRegular.ttf') format('woff2'),
-    url('/BrolimoRegular.ttf') format('woff');
+  src: url('BrolimoRegular.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src:
-    url('/Montserrat-Regular.ttf') format('woff2'),
-    url('/Montserrat-Regular.ttf') format('woff2');
+  src: url('Montserrat-Regular.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -20,30 +16,29 @@
   box-sizing: border-box;
 }
 
-/* --- PAGE --- */
-.page {
-  width: 148mm;
-  height: 210mm;
-  padding: 10mm;
-  border: 1px solid gray; /* TODO: remove */
+@page {
+  size: 148mm 210mm;
+  margin: 10mm;
 }
 
+/* --- SECTION --- */
+/* A logical group of items (e.g. a category). Flows across as many
+   physical pages as needed; @page controls the actual page size/margins. */
 .section-title {
   font-family: 'Brolimo';
   font-size: 24pt;
   font-weight: 100;
   text-align: center;
   margin-bottom: 7mm;
-}
-
-.items-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: calc(100% - 15mm);
+  break-after: avoid;
 }
 
 /* --- ITEM --- */
+.item {
+  break-inside: avoid;
+  margin-bottom: 5mm;
+}
+
 .item-header {
   display: flex;
   justify-content: space-between;
